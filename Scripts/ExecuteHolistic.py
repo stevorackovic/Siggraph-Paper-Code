@@ -19,7 +19,7 @@ import os
 from TACFunctions import solver_holistic, banded_matrix, banded_matrix_add
 work_dir = os.path.dirname(os.path.dirname(os.getcwd()))
 data_dir = os.path.join(work_dir,'Data')
-predictions_dir = os.path.join(work_dir,'Predictions\TimeAwareComponent')
+predictions_dir = os.path.join(work_dir,'Predictions')
 from HelperFunctions import quartic_rig, ctr_order
 
 neutral = np.load(os.path.join(data_dir,'neutral.npy'))
