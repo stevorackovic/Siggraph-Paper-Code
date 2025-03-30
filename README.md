@@ -8,6 +8,7 @@ Published at SIGGRAPH https://dl.acm.org/doi/full/10.1145/3680528.3687670
 
 If you find our paper code helpful, consider citing:
 
+```bibtex
 @inproceedings{10.1145/3680528.3687670,
 author = {Rackovi\'{c}, Stevo and Jakoveti\'{c}, Du\v{s}an and Soares, Cl\'{a}udia},
 title = {Refined Inverse Rigging: A Balanced Approach to High-fidelity Blendshape Animation},
