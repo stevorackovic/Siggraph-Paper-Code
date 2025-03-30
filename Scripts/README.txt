@@ -1,0 +1,1 @@
+ExecuteHolistic.py is the main script that contains the parameter values used in the paper. Another script, Holistic_CD_Inteval.py shows an alternative approach where the solution can be reached in parallel by observing interval batches independently. The last script contains helper funcitons for the two.
