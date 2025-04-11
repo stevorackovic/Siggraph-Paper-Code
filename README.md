@@ -12,7 +12,7 @@ In this paper, we present an advanced approach to solving the inverse rig proble
 
 The code is made to work on Windows OS, and data is extracted usign Autodesk Maya software. 
 
-Required modeules: 
+Required Python modules: 
 
 ```python
 numpy
