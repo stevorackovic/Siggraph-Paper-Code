@@ -4,6 +4,12 @@ By Stevo Rackovic, Dusan Jakovetic, and Claudia Soares
 
 Published at SIGGRAPH https://dl.acm.org/doi/full/10.1145/3680528.3687670
 
+## Data extraction/preparation
+
+Avatars/animations used in this paper are private, hence we provide scripts for extracting blendshapes of your own MetaHumans, or creating a random toyset, within ... folder.
+
+To extract blendshapes from the existing avatars, run the following commands
+
 ## Bibliography
 
 If you find our paper code helpful, consider citing:
