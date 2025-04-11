@@ -10,7 +10,7 @@ Avatars/animations used in this paper are private, hence we provide scripts for 
 
 To extract blendshapes from the existing avatars, run the following commands
 
-```python
+```bash
 # Extract base blendshapes
 python Scripts/ExtractBlendshapes.py
 # Extract higher order corrective terms
@@ -27,8 +27,11 @@ python Scripts/CreateRandomData.py
 After data is extracted, and saved in ../Data, compute singular and eigen values for the blendshape matrix, by running 
 
 ```bash
+# Compute eigen values and singular values for the blendshape matrix
 python Scripts/ComputeEigenSingularValues.py
 ```
+
+All teh extracted/created data will be stored in ../Data repo.
 
 ## Bibliography
 
