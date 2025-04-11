@@ -6,7 +6,7 @@ Published at SIGGRAPH https://dl.acm.org/doi/full/10.1145/3680528.3687670
 
 ## Data extraction/preparation
 
-Avatars/animations used in this paper are private, hence we provide scripts for extracting blendshapes of your own MetaHumans, or creating a random toyset, within ... folder.
+Avatars/animations used in this paper are private, hence we provide scripts for extracting blendshapes of your own MetaHumans (www.unrealengine.com/en-US/metahuman), or creating a random toyset, within ... folder.
 
 To extract blendshapes from the existing avatars, run the following commands
 
@@ -72,3 +72,12 @@ keywords = {blendshape animation, inverse rig problem, face segmentation},
 location = {Tokyo, Japan},
 series = {SA '24}
 }
+```
+
+### Acknowledgements
+
+This work was partially supported by NOVA LINCS (UIDB/04516/2020)
+with the financial support of FCT I.P. and Project "Artificial Intelligence Fights Space Debris" No C626449889-0046305 co-funded
+by Recovery and Resilience Plan and NextGeneration EU Funds,
+www.recuperarportugal.gov.pt. and by the Ministry of Education of
+the Republic of Serbia (451-03-9/2021-14/200125).
