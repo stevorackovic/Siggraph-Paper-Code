@@ -10,7 +10,7 @@ Avatars/animations used in this paper are private, hence we provide scripts for 
 
 To extract blendshapes from the existing avatars, run the following commands
 
-<pre> ```bash python Scripts/ExtractBlendshapes.py ``` </pre>
+<pre> bash python Scripts/ExtractBlendshapes.py </pre>
 <pre> ```bash python Scripts/ExtractCorrectiveBlendshapes.py ``` </pre>
 
 Alternativelly, to create random toydata, run 
