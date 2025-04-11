@@ -12,26 +12,35 @@ To extract blendshapes from the existing avatars, run the following commands
 
 ```bash
 # Extract base blendshapes
-python Scripts/ExtractBlendshapes.py
+python Scripts/DataExtraction/ExtractBlendshapes.py
 # Extract higher order corrective terms
-python Scripts/ExtractCorrectiveBlendshapes.py
+python Scripts/DataExtraction/ExtractCorrectiveBlendshapes.py
 ```
 
 Alternativelly, to create random toydata, run 
 
 ```bash
 # Create random blendshapes and corrective shapes
-python Scripts/CreateRandomData.py
+python Scripts/DataExtraction/CreateRandomData.py
 ```
 
 After data is extracted, and saved in ../Data, compute singular and eigen values for the blendshape matrix, by running 
 
 ```bash
 # Compute eigen values and singular values for the blendshape matrix
-python Scripts/ComputeEigenSingularValues.py
+python Scripts/DataExtraction/ComputeEigenSingularValues.py
 ```
 
-All teh extracted/created data will be stored in ../Data repo.
+All the extracted/created data will be stored in ../Data repo.
+
+## Training and Inference
+
+The main script for the paper results is ExecuteHolistic.py. 
+```bash
+# Compute eigen values and singular values for the blendshape matrix
+python Scripts/ExecuteHolistic.py
+```
+
 
 ## Bibliography
 
