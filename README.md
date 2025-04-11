@@ -4,6 +4,27 @@ By Stevo Rackovic, Dusan Jakovetic, and Claudia Soares
 
 Published at SIGGRAPH https://dl.acm.org/doi/full/10.1145/3680528.3687670
 
+## Introduction
+
+In this paper, we present an advanced approach to solving the inverse rig
+problem in blendshape animation, using high-quality corrective blendshapes.
+Our algorithm focuses on three key areas: ensuring high data fidelity in
+reconstructed meshes, achieving greater sparsity in weight distributions, and
+facilitating smoother frame-to-frame transitions. While the incorporation
+of corrective terms is a known practice, our method differentiates itself by
+employing a unique combination of 𝑙1 norm regularization for sparsity and
+a temporal smoothness constraint through roughness penalty, focusing on
+the sum of second differences in consecutive frame weights. A significant innovation in our approach is the temporal decoupling of blendshapes, which
+permits simultaneous optimization across entire animation sequences. This
+feature sets our work apart from existing methods and contributes to a more
+efficient and effective solution. Our algorithm exhibits a marked improvement in maintaining data fidelity and ensuring smooth frame transitions
+when compared to prior approaches that either lack smoothness regularization or rely solely on linear blendshape models. In addition to superior mesh
+resemblance and smoothness, our method offers practical benefits, including
+reduced computational complexity and execution time, achieved through a
+novel parallelization strategy using clustering methods. Our results not only
+advance the state-of-the-art in terms of fidelity, sparsity, and smoothness in
+inverse rigging but also introduce significant efficiency improvements.
+
 ## Data extraction/preparation
 
 Avatars/animations used in this paper are private, hence we provide scripts for extracting blendshapes of your own MetaHumans (www.unrealengine.com/en-US/metahuman), or creating a random toyset, within ... folder.
