@@ -35,12 +35,20 @@ All the extracted/created data will be stored in ../Data repo.
 
 ## Training and Inference
 
-The main script for the paper results is ExecuteHolistic.py. 
+The main script for the paper results is ExecuteHolistic.py, that trains a model on specified parameters, and produces predicted weights, storing tehm in ../Predictions repo.
 ```bash
-# Compute eigen values and singular values for the blendshape matrix
 python Scripts/ExecuteHolistic.py
 ```
-
+Within the script, a user used specify the folllowing parameter values (in the header part)
+```python
+train_frames = 10           # this will take the first 'train_frames' from 'weights.npy' matrix as a training set
+num_iter_max = 10           # the maximum number of iterations of the CD solver
+num_iter_min = 5            # the minimum number of iterations of the CD solver
+lmbd1 =  1                  # the sparsity regularization parameter of the objective funciton
+lmbd2 =  1                  # the temporal smoothness regularization parameter of the objective funciton
+T = 10                      # Interval batch size
+```
+The above values are default ones, as the optimal values derived from the paper experiments. If the dimensionality of your avatar is ismilar to ours, these should work fine.
 
 ## Bibliography
 
