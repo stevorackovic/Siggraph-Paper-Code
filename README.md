@@ -11,15 +11,15 @@ Avatars/animations used in this paper are private, hence we provide scripts for 
 To extract blendshapes from the existing avatars, run the following commands
 
 <pre> bash python Scripts/ExtractBlendshapes.py </pre>
-<pre> ```bash python Scripts/ExtractCorrectiveBlendshapes.py ``` </pre>
+<pre> bash python Scripts/ExtractCorrectiveBlendshapes.py </pre>
 
 Alternativelly, to create random toydata, run 
 
-<pre> ```bash python Scripts/CreateRandomData.py ``` </pre>
+<pre> bash python Scripts/CreateRandomData.py </pre>
 
 After data is extracted, and saved in ../Data, compute singular and eigen values for the blendshape matrix, by running 
 
-<pre> ```bash python Scripts/ComputeEigenSingularValues.py ``` </pre>
+<pre> bash python Scripts/ComputeEigenSingularValues.py  </pre>
 
 ## Bibliography
 
