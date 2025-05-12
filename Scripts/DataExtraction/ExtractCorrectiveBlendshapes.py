@@ -7,10 +7,10 @@ Created on Thu Aug 31 13:16:54 2023
 This script is to be executed in Autodesk Maya console, with a metahuman (or some other) avatar.
 """
 
-data_dir = r'..\FacialAnimation\Data' # Put a path to your data directory
-m = 130  # Put the number of your character blendhsapes
-m2 = 642 # Put a number of all the controllers under the blendshape node
-names = [] # copy the names from a text file here 
+data_dir = r'..\Data' # Put a path to your data directory
+m = 130               # Put the number of your character blendhsapes
+m2 = 642              # Put a number of all the controllers under the blendshape node
+names = []            # copy the names from a text file here 
 
 # -----------------------------------------------------------------------------
 
