@@ -10,7 +10,7 @@ In this paper, we present an advanced approach to solving the inverse rig proble
 
 ## Installation and Requirements
 
-The python code is made to work on Windows OS, and data can be either created synthetically in Python or extracted usign Autodesk Maya software, if an animated avatar is avaliable. 
+The python code is made to work on Windows OS, and data can be either created synthetically in Python, or extracted usign Autodesk Maya software (https://www.autodesk.com/products/maya/overview), if an animated avatar is avaliable. 
 
 Required Python modules: 
 
