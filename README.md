@@ -21,7 +21,7 @@ scipy
 
 ## Step 1: Data extraction/preparation
 
-Avatars/animations used in this paper are private, hence we provide scripts for extracting blendshapes of your own MetaHumans (www.unrealengine.com/en-US/metahuman), or creating a random toyset, within ..\Data folder.
+Avatars/animations used in this paper are private, hence we provide scripts for extracting blendshapes of your own MetaHumans (www.unrealengine.com/en-US/metahuman), or creating a random toyset, within ..\Data folder. Choose one of the follwoing two alterantives to proceed (either create synthetic random toydata, or use Maya and MetaHumans platfrom to extract the actual animation)
 
 ### 1.1 Creating syhtnetic data 
 
