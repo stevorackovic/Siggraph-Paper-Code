@@ -15,6 +15,7 @@ m1, m2, m3 = 50, 25, 10 # Set the number of corrective terms of first, second an
 
 n = n//3*3 # To make sure it is divisible by 3
 
+print('\nThe script for creating synthetic data running...\n')
 print('Created random synthetic data with the following properties:')
 print('Number of vertices in the mesh: ', int(n/3))
 print('Number of blendshapes: ', m)
@@ -25,8 +26,10 @@ print('Number of the frames in the animation: ', N)
 import os
 import numpy as np
 import random
-work_dir = os.path.dirname(os.path.dirname(os.getcwd()))
+work_dir = os.getcwd()
 data_dir = os.path.join(work_dir,'Data')
+print('Working directory: ', work_dir)
+print('Data directory: ', data_dir)
 
 deltas = np.random.randn(n,m)
 neutral = np.random.randn(n)
@@ -48,6 +51,6 @@ np.save(os.path.join(data_dir,'keys1.npy'),keys1)
 np.save(os.path.join(data_dir,'keys2.npy'),keys2)
 np.save(os.path.join(data_dir,'keys3.npy'),keys3)
 
-print('Data created successfully, stored at ', data_dir)
+print('\nData created successfully, stored at ', data_dir)
 
 
