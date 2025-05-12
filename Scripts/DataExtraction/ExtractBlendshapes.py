@@ -7,9 +7,9 @@ Created on Thu Aug 31 11:59:06 2023
 This script is to be executed in Autodesk Maya console, with a metahuman (or some other) avatar.
 """
 
-N = 100   # Set here the number of frames of your animaiton
-n = 72147 # Set here the number of vertices (times 3) of your avatar. The default value for metahumans is given here
-data_dir = r'..\FacialAnimation\Data' # Put a path to your data directory
+N = 100               # Set here the number of frames of your animaiton
+n = 72147             # Set here the number of vertices (times 3) of your avatar. The default value for metahumans is given here
+data_dir = r'..\Data' # Put a path to your data directory
 
 # -----------------------------------------------------------------------------
 print('Extracting data with the following properties:')
