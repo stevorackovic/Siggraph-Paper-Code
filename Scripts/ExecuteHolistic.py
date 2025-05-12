@@ -14,12 +14,16 @@ lmbd2 =  1                  # the temporal smoothness regularization parameter o
 T = 10                      # Interval batch size
 
 # -----------------------------------------------------------------------------
+print('\nThe main script for executing the problem is running...\n')
 import numpy as np
 import os
 from TACFunctions import solver_holistic, banded_matrix, banded_matrix_add
-work_dir = os.path.dirname(os.path.dirname(os.getcwd()))
+work_dir = os.getcwd()
 data_dir = os.path.join(work_dir,'Data')
 predictions_dir = os.path.join(work_dir,'Predictions')
+print('Working directory: ', work_dir)
+print('Data directory: ', data_dir)
+print('Predictions directory: ', predictions_dir)
 from HelperFunctions import quartic_rig, ctr_order
 
 neutral = np.load(os.path.join(data_dir,'neutral.npy'))
@@ -57,5 +61,4 @@ for frame in range(N):
     Predictions.append(np.copy(pred))
 filename = f'Pred_num_iter_max_{num_iter_max}_num_iter_min_{num_iter_min}_lmbd1_{lmbd1}_lmbd2_{lmbd2}_T_{T}.npy'
 np.save(os.path.join(predictions_dir, filename), np.array(Predictions))
-print('')
-print('Predictions made and stored at ', predictions_dir)
+print('\nPredictions made and stored at ', predictions_dir)
