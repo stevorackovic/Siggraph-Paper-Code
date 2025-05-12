@@ -6,11 +6,15 @@ Created on Thu Aug 31 13:52:23 2023
 
 """
 
+print('\nThe script for computing eigen and singular values from the blendshape matrices is running...\n')
+
 import os
 import numpy as np
 from scipy.linalg import eigh
-work_dir = os.path.dirname(os.path.dirname(os.getcwd()))
+work_dir = os.getcwd()
 data_dir = os.path.join(work_dir,'Data')
+print('Working directory: ', work_dir)
+print('Data directory: ', data_dir)
 
 def H_initialization(vtx,bs1,keys1):
     H = np.zeros((m,m))
@@ -36,7 +40,7 @@ for vtx in range(n):
 lambdas_high = np.zeros(n)
 lambdas_low = np.zeros(n)
 for i in range(n):
-    egvs = eigh(D_chs[i],eigvals=(0,m-1),eigvals_only =True)
+    egvs = eigh(D_chs[i],subset_by_index=[0,m-1],eigvals_only =True)
     lambdas_high[i] += egvs[-1]
     lambdas_low[i] += egvs[0]
 np.save(os.path.join(data_dir,'eigen_max.npy'),lambdas_high)
@@ -48,5 +52,5 @@ for i in range(n):
     sigmas_D[i] += s[0]
 np.save(os.path.join(data_dir,'singular.npy'),sigmas_D)
 
-print('Singular and eigen values extracted successfully, stored at ', data_dir)
+print('\nSingular and eigen values extracted successfully, stored at ', data_dir)
 
