@@ -10,7 +10,7 @@ In this paper, we present an advanced approach to solving the inverse rig proble
 
 ## Installation and Requirements
 
-The python code is made to work on Windows OS, and data is extracted usign Autodesk Maya software. 
+The python code is made to work on Windows OS, and data can be either created synthetically in Python or extracted usign Autodesk Maya software, if an animated avatar is avaliable. 
 
 Required Python modules: 
 
@@ -19,25 +19,54 @@ numpy
 scipy
 ```
 
-## Data extraction/preparation
+## Step 1: Data extraction/preparation
 
-Avatars/animations used in this paper are private, hence we provide scripts for extracting blendshapes of your own MetaHumans (www.unrealengine.com/en-US/metahuman), or creating a random toyset, within ... folder.
+Avatars/animations used in this paper are private, hence we provide scripts for extracting blendshapes of your own MetaHumans (www.unrealengine.com/en-US/metahuman), or creating a random toyset, within ..\Data folder.
 
-To extract blendshapes from the existing avatars, run the following commands
+### 1.1 Creating syhtnetic data 
 
-```bash
-# Extract base blendshapes
-python Scripts/DataExtraction/ExtractBlendshapes.py
-# Extract higher order corrective terms
-python Scripts/DataExtraction/ExtractCorrectiveBlendshapes.py
-```
-
-Alternativelly, to create random toydata, run 
+To create random toydata, run 
 
 ```bash
 # Create random blendshapes and corrective shapes
 python Scripts/DataExtraction/CreateRandomData.py
 ```
+Within the script, default parameters as in our paper are set to
+```python
+N = 100   # Set here the number of frames of your animaiton
+n = 9000  # Set here the number of vertices (times 3) of your avatar. 
+m = 60    # Put the number of your character blendhsapes
+m1, m2, m3 = 50, 25, 10 # Set the number of corrective terms of first, second and third level, respectively
+```
+and can be changed if prefered.
+
+### 1.2 Extracting metahuman data 
+
+For this alternative, one needs to have installed Autodesk Maya, and numpy within. Also, need to download MetaHuman avatars. In the paper we used avatar named Omar (www.unrealengine.com/en-US/metahuman).
+To extract blendshapes from the existing avatars, open a Python console in Maya, with loaded avatar, and copy the code from the following two scripts sequentially
+
+```bash
+# To extract base blendshapes
+Scripts/DataExtraction/ExtractBlendshapes.py
+# To extract higher order corrective terms
+Scripts/DataExtraction/ExtractCorrectiveBlendshapes.py
+```
+
+Within the script ExtractBlendshapes.py, specify the parameters as needed
+```python
+N = 100               # Set here the number of frames of your animaiton
+n = 72147             # Set here the number of vertices (times 3) of your avatar. The default value for metahumans is given here
+data_dir = r'..\Data' # Put a path to your data directory
+```
+Within the script ExtractCorrectiveBlendshapes.py, specify the parameters as needed
+```python
+data_dir = r'..\Data' # Put a path to your data directory
+m = 130               # Put the number of your character blendhsapes
+m2 = 642              # Put a number of all the controllers under the blendshape node
+names = []            # copy the names from a text file here 
+```
+
+## Step 2: Eigen/singualr values
 
 After data is extracted, and saved in ../Data, compute singular and eigen values for the blendshape matrix, by running 
 
@@ -48,13 +77,13 @@ python Scripts/DataExtraction/ComputeEigenSingularValues.py
 
 All the extracted/created data will be stored in ../Data repo.
 
-## Training and Inference
+## Step 3: Training and Inference
 
 The main script for the paper results is ExecuteHolistic.py, that trains a model on specified parameters, and produces predicted weights, storing tehm in ../Predictions repo.
 ```bash
 python Scripts/ExecuteHolistic.py
 ```
-Within the script, a user used specify the folllowing parameter values (in the header part)
+Within the script, a user should specify the following parameter values (in the header part)
 ```python
 train_frames = 10           # this will take the first 'train_frames' from 'weights.npy' matrix as a training set
 num_iter_max = 10           # the maximum number of iterations of the CD solver
@@ -63,7 +92,7 @@ lmbd1 =  1                  # the sparsity regularization parameter of the objec
 lmbd2 =  1                  # the temporal smoothness regularization parameter of the objective funciton
 T = 10                      # Interval batch size
 ```
-The above values are default ones, as the optimal values derived from the paper experiments. If the dimensionality of your avatar is ismilar to ours, these should work fine.
+The above values are default ones, as the optimal values derived from the paper experiments. If the dimensionality of your avatar is similar to ours, these should work fine.
 
 ## Bibliography
 
