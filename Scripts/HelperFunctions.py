@@ -166,6 +166,33 @@ def error_cardinality(path, file_name, target_meshes, deltas, bs1, bs2, bs3, key
     L1norm = np.mean(nrm)
     return Error_mean, Error_max, Cardinality, L1norm
 
+def smoothness(Weights_list,m):
+    '''
+    Computes the roughness penalty of frame-to-frame transitions for animation weights.
+
+    Parameters
+    ----------
+    Weights_list : list
+        List of weights.
+    m : int
+        Number of blendshapes.
+    
+    Returns
+    -------
+    Second_differences_sum : float
+        Sum of second differences, i.e., roughness penalty for the transionon weights.
+    '''
+    Second_differences_sum = np.zeros(m)
+    for i in range(len(Weights_list)):
+        Y = Weights_list[i]
+        sec_diff = []
+        for ctr in range(m):
+            ctr_i = Y[:,ctr]
+            sec_diff.append((ctr_i[2:] + ctr_i[:-2] - 2*ctr_i[1:-1])**2)
+        sec_diff = np.array(sec_diff).T
+        Second_differences_sum += sec_diff.sum(0)
+    return Second_differences_sum
+
 # -----------------------------------------------------------------------------
 # Functions for SSKLN:
 
