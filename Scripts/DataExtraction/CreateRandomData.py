@@ -6,13 +6,10 @@ Created on Thu Aug 31 13:52:23 2023
 
 """
 
-N = 100   # Set here the number of frames of your animaiton
-n = 9000  # Set here the number of vertices (times 3) of your avatar. 
-m = 60    # Put the number of your character blendhsapes
-m1, m2, m3 = 50, 25, 10 # Set the number of corrective terms of first, second and third level, respectively
-
-# -----------------------------------------------------------------------------
-
+import os
+import numpy as np
+import random
+from Parameters import T, N, n, m, m1, m2, m3
 n = n//3*3 # To make sure it is divisible by 3
 
 print('\nThe script for creating synthetic data running...\n')
@@ -23,9 +20,7 @@ print('Number of corrective terms of the first level: ', m1)
 print('Number of corrective terms of the second level: ', m2)
 print('Number of corrective terms of the third level: ', m3)
 print('Number of the frames in the animation: ', N)
-import os
-import numpy as np
-import random
+
 work_dir = os.getcwd()
 data_dir = os.path.join(work_dir,'Data')
 print('Working directory: ', work_dir)
@@ -33,9 +28,15 @@ print('Data directory: ', data_dir)
 
 deltas = np.random.randn(n,m)
 neutral = np.random.randn(n)
-W = np.random.randn(N,m)
-W[W<0]=0
-W[W>1]=1
+W = np.zeros((N,m))
+for j in range(m):
+    w_i = np.clip(np.random.randn()*0.5, 0, 1)
+    w = [w_i]
+    for i in range(N-1):
+        increment = np.random.randn()*0.1
+        w_i = np.clip( w[i]+increment, 0, 1)
+        w.append(w_i)
+    W[:,j] += w
 
 np.save(os.path.join(data_dir,'weights.npy'),W)
 np.save(os.path.join(data_dir,'deltas.npy'),deltas)
