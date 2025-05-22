@@ -6,18 +6,11 @@ Created on Wed Oct 4 16:54:17 2023
 
 """
 
-train_frames = 10           # this will take the first 'train_frames' from 'weights.npy' matrix as a training set
-num_iter_max = 10           # the maximum number of iterations of the CD solver
-num_iter_min = 5            # the minimum number of iterations of the CD solver
-lmbd1 =  1                  # the sparsity regularization parameter of the objective funciton
-lmbd2 =  1                  # the temporal smoothness regularization parameter of the objective funciton
-T = 10                      # Interval batch size
-
-# -----------------------------------------------------------------------------
 print('\nThe main script for executing the problem is running...\n')
 import numpy as np
 import os
 from TACFunctions import solver_holistic, banded_matrix, banded_matrix_add
+from DataExtraction.Parameters import train_frames, num_iter_max, num_iter_min, lmbd1, lmbd2, T
 work_dir = os.getcwd()
 data_dir = os.path.join(work_dir,'Data')
 predictions_dir = os.path.join(work_dir,'Predictions')
@@ -54,11 +47,7 @@ F_tilde, vector_add_e, vector_add_g = banded_matrix_add(F)
 print('Total animation frames: ', len(weights))
 print('Training animation frames: ', len(weights_train))
 
-Predictions = []
-for frame in range(N):
-    target_mesh = target_meshes[frame]
-    pred = solver_holistic(N,T,target_meshes,m,deltas,bs1, bs2, bs3, keys1, keys2, keys3,order,F,F_tilde,vector_add_e,vector_add_g,lmbd1,lmbd2,num_iter_max,num_iter_min)    
-    Predictions.append(np.copy(pred))
+Predictions = solver_holistic(N,T,target_meshes,m,deltas,bs1, bs2, bs3, keys1, keys2, keys3,order,F,F_tilde,vector_add_e,vector_add_g,lmbd1,lmbd2,num_iter_max,num_iter_min)    
 filename = f'Pred_num_iter_max_{num_iter_max}_num_iter_min_{num_iter_min}_lmbd1_{lmbd1}_lmbd2_{lmbd2}_T_{T}.npy'
 np.save(os.path.join(predictions_dir, filename), np.array(Predictions))
 print('\nPredictions made and stored at ', predictions_dir)
